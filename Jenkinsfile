@@ -9,7 +9,10 @@ pipeline{
         }
         stage('build'){
             steps{
-                sh 'mvn clean package sonar:sonar'
+                sh """
+                 export PATH="/usr/lib/jvm/java-17-openjdk-amd64/bin:$PATH"
+                 mvn clean package sonar:sonar
+                 """
             }
         }
     }
